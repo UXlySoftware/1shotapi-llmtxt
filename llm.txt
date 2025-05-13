@@ -98,8 +98,8 @@ Webhooks are an optional configuration for your transaction endpoints but are hi
 has been confirmed on the blockchain network. 1Shot API implements best practices for webhooks are discussed at [webhooks.fyi](https://webhooks.fyi/), which includes
 replay protection and forward compatibility. 
 
-1Shot API signs the webhook payload using the [ed25519](https://en.wikipedia.org/wiki/EdDSA#Ed25519) signature scheme. Each transaction
+1Shot API signs every webhook payload using the [ed25519](https://en.wikipedia.org/wiki/EdDSA#Ed25519) signature scheme. Each transaction
 endpoint generates its own public-private keypair. The signature is included in the JSON payload under the key ``signature``. You should verify the signature using 
-the public key provided in the transaction details page. The public key is a base64 encoded ed25519 public key that you can use to verify the signature.
+the public key provided by the corresponding transaction endpoint. The public key is a base64 encoded ed25519 public key that you can use to verify the signature.
 
 A complete example you can run from your local machine can be found [here](https://github.com/UXlySoftware/webhook-sinker).
