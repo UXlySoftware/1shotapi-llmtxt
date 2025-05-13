@@ -1,6 +1,6 @@
 # 1Shot API
 
-> The 1Shot API is the first fully managed, enterprise-grade hot wallet and transaction service for the Ethereum mainnet and L2 ecosystem (Binance and Avalanche are supported as well). It also allows for smart contracts on any EVM network to be used as tools for both read and write functions.
+> The 1Shot API is the first fully managed, enterprise-grade hot wallet and transaction service for the Ethereum mainnet and L2 ecosystem (Binance and Avalanche are supported as well). It also allows for read and write functions of smart contracts on any EVM network to be used as tools by AI agents.
 
 1Shot is not an RPC provider, but an abstraction layer on top of typical RPC providers (like Infura or Alchemy). In fact, depending on your use case you may not even 
 need an RPC provider as we handle the full transaction lifecycle with real-time webhook callbacks on the final state of your transactions. 1Shot API allows you to read from 
