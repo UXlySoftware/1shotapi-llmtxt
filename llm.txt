@@ -1,0 +1,68 @@
+# 1Shot API
+
+> The 1Shot API is the first fully managed, enterprise-grade hot wallet and transaction service for the Ethereum mainnet and L2 ecosystem (Binance and Avalanche are supported as well). It also allows for smart contracts on any EVM network to be used as tools for both read and write functions.
+
+1Shot is not an RPC provider, but an abstraction layer on top of typical RPC providers (like Infura or Alchemy). In fact, depending on your use case you may not even 
+need an RPC provider as we handle the full transaction lifecycle with real-time webhook callbacks on the final state of your transactions. 1Shot API allows you to read from 
+and write to smart contracts without the need of importing web3 clients like ethers.js into your source code. This lets you focus on the logic specific to your application
+while 1Shot API handles the complexities of data types, contract ABIs, signers and private key security, and nonce cohesion for you.
+
+The 1Shot API service is designed to handle heavy user traffic. If your product has many users generating on-chain mechanics all at once, 1Shot ensures all of your 
+transactions will make it to the chain quickly and gas efficiently. 1Shot greatly simplifies the technical overhead of adding digital assets or on-chain logic to 
+any application, regardless of the language you application is written in.
+
+The 1Shot API service is designed to handle heavy user traffic. If your product has many users generating on-chain mechanics all at once, 1Shot API ensures all of your 
+transactions will make it to the chain quickly and gas efficiently. 1Shot greatly simplifies the technical overhead of adding digital assets or on-chain logic to 
+any application, bot, or agent, regardless of the language your application is written in.
+
+Several helpful client sdks for popular languages like [Python](https://pypi.org/project/uxly-1shot-client/), [Typescript](https://www.npmjs.com/package/@uxly/1shot-client) 
+are available so you can one shot your next app in no time, leaving the complexities of transaction submission and monitoring to us.
+
+Human readable documentation is available at https://docs.1shotapi.com.
+
+## 1Shot API Organizations
+
+The first step in using 1Shot is to create an organization. You will be prompted to do this on your fist sign in. 
+An organization is a container for your projects and team members as well as billing. 
+
+You can create new organizations by going to the "Organizations" tab in the 1Shot dashboard and clicking on the "Create Organization" button.
+Escrow wallets and transaction endpoints are not shared between organizations and each organization has its own billing.
+
+Once you have created an organization, you can add team members to it. Team members can be added by clicking on your profile icon in the top
+right of the console and selecting "Organizations". This will take you to a page showing all organizations of which you are currently a member.
+Click "Details" on the target organization you want to add a new member to. 
+
+On the organization details page, first click "Update", then you will need to enter the email address of the team member and select their role. 
+Finalize by clicking "Save". This will trigger an email notification to the new member that they have been given access to your organization.
+You team members will be able to access your organization's projects and resources. Assign appropriate roles to team members in order to 
+limit what actions they are allowed to perform within your organization.
+
+## Escrow Wallet (also referred to as Hot Wallets)
+
+Escrow wallets are Ethereum-compatible signing keys managed by 1Shot to submit transactions on your behalf when you make a REST 
+call to one of your configured transaction endpoints. Each of your escrow wallets can be linked to one or 
+more transaction endpoints (but each endpoint can only have a single default escrow wallet which can be overridden when the endpoint
+is called from the api). In order to submit a transaction from any of your 1Shot-managed escrow wallets, you must first deposit gas tokens.
+
+1Shot's hot wallet infrastructure keeps your keys secure and encrypted at rest, but it is still good practice to only deposit 
+the amount of gas tokens you need for a given period of time. When your wallet runs low on funds, 1Shot will automatically send 
+you an email notification. You can deposit additional gas funds into your escrow wallet at anytime which will trigger a confirmation 
+email when 1Shot detects the deposit.
+
+To create an escrow wallet, navigate to the [Escrow Wallets](https://app.1shotapi.com/escrow-wallets) page in the 1Shot dashboard 
+and click the "Create Wallet" button. You will be prompted to enter a name and description for your new wallet and the target blockchain 
+the wallet will operate on.
+
+You must deposit native tokens into your escrow wallet to pay for transactions signed by its key. Only fund your escrow wallet with 
+assets on the target blockchain the wallet is configured for. 
+
+For example, if you are setting up an escrow wallet for the Ethereum mainnet, you should only deposit ETH to pay for gas into the 
+wallet. If you are configuring a wallet for the Polygon network, you should only deposit Polygon gas tokens into the wallet.
+
+> [!HINT]
+> You can deposit ERC-20 tokens, ERC-721 NFTs or other similar assets into an escrow wallet to make it easier to perform airdrops or DeFi trades. 
+> Another strategy would be to leave the tokens in a cold (or soft wallet) that you personally control and [approve](https://eips.ethereum.org/EIPS/eip-20#approve) 
+> the 1Shot escrow wallet to spend them when needed.
+
+You can withdraw funds from your escrow wallet at any time by clicking the "Withdraw" button on the wallet's detail page. Enter the amount of gas (native)
+tokens you want to withdraw and click "Send". You'll be prompted to confirm the withdrawal details before the transaction is submitted.
